@@ -10,6 +10,8 @@ model = AutoModelForSequenceClassification.from_pretrained(model_name)
 
 # Replace Linear layers with BitLinear
 replace_linears_in_hf(model)
+# Print weights of the first BitLinear layer
+print(model.bert.encoder.layer[0].attention.self.query.weight)
 
 # Example text to classify
 text = "Replace this with your text"
